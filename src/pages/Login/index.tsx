@@ -23,7 +23,7 @@ const Login: React.FC = () => {
   
   const handleLogin = async () => {
     try {
-      const res = await axios.post(`${process.env.VITE_API_BASE_URL || "http://localhost:3001/api"}/auth/login`, { username, password });
+      const res = await axios.post(`${process.env.VITE_API_BASE_URL || "https://brb-backend.onrender.com/api"}/auth/login`, { username, password });
       // dispatch(setUser(res.data));
       localStorage.setItem('token', JSON.stringify(res.data.accessToken));
       localStorage.setItem('user', JSON.stringify(res.data));
