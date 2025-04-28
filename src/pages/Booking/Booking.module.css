@@ -1,0 +1,38 @@
+.pageWrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  --bg-gradient: linear-gradient(to bottom, #ebf8ff, #ffffff);
+  position: relative;
+  padding: 20px;
+  margin-left: 240px;
+}
+
+.cloudBackground {
+  position: absolute;
+  inset: 0;
+  /* background-image: url('../../assets/cloud.jpg');
+  background-size: cover;
+  background-position: center; */
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  z-index: 1;
+  --bg-color: rgba(255, 255, 255, 0.8);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  max-width: 500px;
+  width: 50% !important;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
