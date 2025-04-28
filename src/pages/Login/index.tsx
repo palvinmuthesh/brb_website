@@ -6,6 +6,7 @@ import axios from 'axios';
 import EmailIcon from '@mui/icons-material/Email';
 import LoginIcon from '@mui/icons-material/Login';
 import LockIcon from '@mui/icons-material/Lock';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import styles from './Login.module.css';
 import { UserContext } from '../../userContext';
@@ -14,6 +15,7 @@ import { toast } from 'react-toastify';
 const Login: React.FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [see, setSee] = useState(false);
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
@@ -53,7 +55,7 @@ const Login: React.FC = () => {
           </div>
         </div>
 
-        <h2 className={styles.title}>Sign in with email</h2>
+        <h2 className={styles.title}>Sign in with username</h2>
         <p className={styles.subtitle}>
           Make a new doc to bring your words, data, and teams together. For free
         </p>
@@ -63,21 +65,25 @@ const Login: React.FC = () => {
             <EmailIcon className={styles.inputIcon} />
             <input
               type="email"
-              placeholder="Email"
+              placeholder="Username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
           </div>
 
           <div className={styles.inputGroup}>
-            <LockIcon className={styles.inputIcon} />
+            <LockIcon className={styles.inputIcon}/>
             <input
-              type="password"
+              type={!see ? "password" : "text"}
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <VisibilityIcon className={styles.eyeIcon} />
+            {!see ? <VisibilityOffIcon className={styles.inputIcon} onClick={()=>{
+              setSee(!see)
+            }}/> : <VisibilityIcon className={styles.inputIcon} onClick={()=>{
+              setSee(!see)
+            }}/> }
           </div>
 
           {/* <div className={styles.forgotPassword}>Forgot password?</div> */}
