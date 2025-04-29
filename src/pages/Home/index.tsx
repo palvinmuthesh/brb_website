@@ -18,8 +18,10 @@ import SkeletonCard from '../../components/SkeletonCard';
 import ThemeToggle from '../../components/ThemeToggle';
 import { RootState } from '../../redux/store';
 import { fetchLocations } from '../../redux/slices/locationSlices';
+import { useNavigate } from 'react-router-dom';
 
 const Home: React.FC = () => {
+  const navigate = useNavigate();
   const theme = useTheme();
   const isLight = theme.palette.mode === 'light';
   const dispatch = useAppDispatch();
@@ -101,6 +103,12 @@ const Home: React.FC = () => {
     setCurrentPage(value);
   };
 
+  const handleClick = (vend: any, serv: any) => {
+    setTimeout(() => {
+      navigate(`/booking/${vend}/${serv}`);
+    }, 2000); // 2-second delay
+  };
+
   return (
     <div className={styles.pageWrapper}>
       <div className={styles.cloudBackground}></div>
@@ -178,7 +186,8 @@ const Home: React.FC = () => {
                   <Button
                     variant="contained"
                     fullWidth
-                    href={`/booking/${vendor._id}/${service._id}`}
+                    // href={`/booking/${vendor._id}/${service._id}`}
+                    onClick={() => {handleClick(vendor._id, service._id)}}
                   >
                     Book Now
                   </Button>
